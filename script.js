@@ -1,59 +1,57 @@
-const WHATSAPP_NUMBER = "5538998833730";
+// MENU MOBILE
 
-// Botão principal do WhatsApp
-const whatsappLink = document.getElementById("whatsapp-link");
+const menuToggle = document.getElementById("menuToggle");
+const navigation = document.getElementById("navigation");
 
-if (whatsappLink) {
-  whatsappLink.href = `https://wa.me/${WHATSAPP_NUMBER}`;
-}
+menuToggle.addEventListener("click", () => {
+  const isOpen = navigation.classList.toggle("active");
 
-// Menu para celular
-const menuToggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".nav");
-
-menuToggle?.addEventListener("click", () => {
-  const isOpen = nav.classList.toggle("open");
-
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-  menuToggle.textContent = isOpen ? "×" : "☰";
+  menuToggle.setAttribute("aria-expanded", isOpen);
 });
 
-// Fechar menu após clicar em um link
-document.querySelectorAll(".nav a").forEach(link => {
+document.querySelectorAll(".navigation a").forEach(link => {
   link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    menuToggle?.setAttribute("aria-expanded", "false");
-
-    if (menuToggle) {
-      menuToggle.textContent = "☰";
-    }
+    navigation.classList.remove("active");
+    menuToggle.setAttribute("aria-expanded", "false");
   });
 });
 
-// Atualizar ano automaticamente
+
+// ANIMAÇÕES DE ENTRADA
+
+const revealElements = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+
+  const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+
+    });
+
+  }, {
+    threshold: 0.12
+  });
+
+  revealElements.forEach(element => {
+    observer.observe(element);
+  });
+
+} else {
+
+  revealElements.forEach(element => {
+    element.classList.add("visible");
+  });
+
+}
+
+
+// ANO AUTOMÁTICO
+
 document.getElementById("year").textContent =
   new Date().getFullYear();
-
-// Formulário integrado ao WhatsApp
-document.getElementById("contact-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const form = new FormData(event.currentTarget);
-
-  const name = form.get("name");
-  const contact = form.get("email");
-  const area = form.get("area");
-  const message = form.get("message") ||
-    "Gostaria de informações sobre atendimento.";
-
-  const text =
-    `Olá! Meu nome é ${name}. ` +
-    `Meu contato: ${contact}. ` +
-    `Assunto: ${area}. ` +
-    `Mensagem: ${message}`;
-
-  window.open(
-    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,
-    "_blank"
-  );
-});
