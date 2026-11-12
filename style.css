@@ -1,6 +1,7 @@
 :root {
   --black: #080808;
   --green: #06251F;
+  --green-light: #103D32;
   --wine: #4B0711;
   --gold: #D1AA59;
   --gold-light: #F0D18B;
@@ -38,25 +39,32 @@ img {
   max-width: 100%;
 }
 
-/* HEADER */
+/* HEADER - VERDE DA LOGO */
 
 .header {
   min-height: 92px;
   padding: 15px 7%;
-  background: var(--black);
+  background: var(--green);
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(209,170,89,.25);
+  border-bottom: 1px solid rgba(209,170,89,.35);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  background: transparent;
 }
 
 .brand img {
   width: 145px;
   height: 58px;
   object-fit: contain;
+  background: transparent;
 }
 
 .navigation {
@@ -73,13 +81,13 @@ img {
 }
 
 .navigation a:hover {
-  color: var(--gold);
+  color: var(--gold-light);
 }
 
 .navigation .nav-contact {
   border: 1px solid var(--gold);
   padding: 13px 22px;
-  color: var(--gold);
+  color: var(--gold-light);
 }
 
 .menu-toggle {
@@ -132,7 +140,7 @@ h1 em, h2 em {
   color: var(--white);
 }
 
-/* HERO */
+/* HERO - INÍCIO */
 
 .hero {
   min-height: 700px;
@@ -142,6 +150,10 @@ h1 em, h2 em {
   align-items: center;
   gap: 70px;
   position: relative;
+  background:
+    radial-gradient(circle at 15% 50%, #12473B 0%, transparent 55%),
+    linear-gradient(135deg, #06251F, #031B17);
+  color: var(--white);
 }
 
 .hero-content h1 {
@@ -149,10 +161,15 @@ h1 em, h2 em {
   line-height: 1.03;
   max-width: 680px;
   margin-bottom: 28px;
+  color: white;
+}
+
+.hero-content h1 em {
+  color: var(--gold-light);
 }
 
 .hero-content p {
-  color: var(--text);
+  color: #E2E8E3;
   font-size: 14px;
   line-height: 2;
   max-width: 470px;
@@ -169,7 +186,7 @@ h1 em, h2 em {
 .button-gold {
   display: inline-block;
   padding: 17px 26px;
-  background: var(--gold);
+  background: linear-gradient(135deg, #F0D18B, #D1AA59);
   color: var(--black);
   font-size: 11px;
   font-weight: 700;
@@ -205,7 +222,7 @@ h1 em, h2 em {
 .hero-signature small {
   font-size: 9px;
   letter-spacing: 2px;
-  color: #A9A49A;
+  color: #C7CEC9;
 }
 
 .hero-image {
@@ -228,7 +245,7 @@ h1 em, h2 em {
   object-fit: cover;
   object-position: center top;
   z-index: 1;
-  filter: saturate(.75);
+  filter: saturate(.85);
 }
 
 .image-caption {
@@ -263,7 +280,7 @@ h1 em, h2 em {
   right: 9%;
   display: flex;
   justify-content: space-between;
-  color: #8F8B83;
+  color: #C1BCA9;
   font-size: 9px;
   letter-spacing: 3px;
 }
@@ -612,6 +629,20 @@ h1 em, h2 em {
   overflow-wrap: anywhere;
 }
 
+/* MAPA */
+
+.map-section {
+  padding: 70px 10%;
+  background: var(--cream);
+}
+
+.map-section iframe {
+  display: block;
+  width: 100%;
+  height: 380px;
+  border: 0;
+}
+
 /* RODAPÉ */
 
 .footer {
@@ -719,10 +750,12 @@ h1 em, h2 em {
   .header {
     min-height: 76px;
     padding: 10px 6%;
+    background: var(--green);
   }
 
   .brand img {
     width: 115px;
+    height: 55px;
   }
 
   .menu-toggle {
@@ -737,7 +770,7 @@ h1 em, h2 em {
     left: 0;
     width: 100%;
     padding: 30px 7%;
-    background: #080808;
+    background: var(--green);
     flex-direction: column;
     align-items: stretch;
     border-top: 1px solid rgba(209,170,89,.3);
@@ -840,9 +873,17 @@ h1 em, h2 em {
     gap: 25px;
   }
 
+  .map-section {
+    padding: 50px 7%;
+  }
+
+  .map-section iframe {
+    height: 300px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   html {
     scroll-behavior: auto;
   }
@@ -851,93 +892,5 @@ h1 em, h2 em {
     opacity: 1;
     transform: none;
     transition: none;
-  }
-} 
-/* =========================================
-   HERO PREMIUM - FUNDO VERDE
-   ALMEIDA ADVOCACIA
-========================================= */
-
-.hero {
-  background:
-    radial-gradient(
-      circle at 15% 50%,
-      rgba(25, 83, 66, 0.55),
-      transparent 55%
-    ),
-    linear-gradient(
-      135deg,
-      #06251F 0%,
-      #031B17 100%
-    );
-
-  color: #FFFFFF;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-content h1 {
-  color: #FFFFFF;
-}
-
-.hero-content h1 em {
-  color: #D1AA59;
-}
-
-.hero-content p {
-  color: #E2E8E3;
-}
-
-.hero-signature {
-  border-left: 2px solid #D1AA59;
-}
-
-.hero-signature span {
-  color: #F0D18B;
-}
-
-.hero-signature small {
-  color: #C7CEC9;
-}
-
-.hero-bottom {
-  color: #C1BCA9;
-}
-
-.hero-image::before {
-  border-color: #D1AA59;
-}
-
-.hero-image img {
-  filter: saturate(.85);
-}
-
-/* ACABAMENTO PREMIUM */
-
-.button-gold {
-  background: linear-gradient(
-    135deg,
-    #F0D18B,
-    #D1AA59
-  );
-  color: #080808;
-  box-shadow: 0 8px 25px rgba(209,170,89,.15);
-}
-
-.button-gold:hover {
-  background: #F5DDA6;
-}
-
-/* RESPONSIVIDADE */
-
-@media (max-width: 760px) {
-  .hero {
-    background:
-      radial-gradient(
-        circle at 50% 30%,
-        #12473B,
-        transparent 75%
-      ),
-      #06251F;
   }
 }
