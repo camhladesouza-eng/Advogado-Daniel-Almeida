@@ -852,4 +852,92 @@ h1 em, h2 em {
     transform: none;
     transition: none;
   }
+} 
+/* =========================================
+   HERO PREMIUM - FUNDO VERDE
+   ALMEIDA ADVOCACIA
+========================================= */
+
+.hero {
+  background:
+    radial-gradient(
+      circle at 15% 50%,
+      rgba(25, 83, 66, 0.55),
+      transparent 55%
+    ),
+    linear-gradient(
+      135deg,
+      #06251F 0%,
+      #031B17 100%
+    );
+
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content h1 {
+  color: #FFFFFF;
+}
+
+.hero-content h1 em {
+  color: #D1AA59;
+}
+
+.hero-content p {
+  color: #E2E8E3;
+}
+
+.hero-signature {
+  border-left: 2px solid #D1AA59;
+}
+
+.hero-signature span {
+  color: #F0D18B;
+}
+
+.hero-signature small {
+  color: #C7CEC9;
+}
+
+.hero-bottom {
+  color: #C1BCA9;
+}
+
+.hero-image::before {
+  border-color: #D1AA59;
+}
+
+.hero-image img {
+  filter: saturate(.85);
+}
+
+/* ACABAMENTO PREMIUM */
+
+.button-gold {
+  background: linear-gradient(
+    135deg,
+    #F0D18B,
+    #D1AA59
+  );
+  color: #080808;
+  box-shadow: 0 8px 25px rgba(209,170,89,.15);
+}
+
+.button-gold:hover {
+  background: #F5DDA6;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 760px) {
+  .hero {
+    background:
+      radial-gradient(
+        circle at 50% 30%,
+        #12473B,
+        transparent 75%
+      ),
+      #06251F;
+  }
 }
